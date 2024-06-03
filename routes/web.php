@@ -38,6 +38,20 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    //
+    Route::resource('/clients', App\Http\Controllers\ClientController::class);
+    Route::resource('/waranties', App\Http\Controllers\WarantyController::class);
+    Route::resource('/budjets', App\Http\Controllers\BudjetController::class);
+    Route::resource('/parts', App\Http\Controllers\PartController::class);
+    Route::resource('/labours', App\Http\Controllers\LabourController::class);
+    Route::resource('/workers', App\Http\Controllers\WorkerController::class);
+    Route::resource('/operations', App\Http\Controllers\OperationController::class);
+    Route::resource('/components', App\Http\Controllers\ComponentController::class);
+    Route::resource('/items', App\Http\Controllers\ItemController::class);
+    Route::resource('/services', App\Http\Controllers\ServiceController::class);
+    Route::resource('/typeorders', App\Http\Controllers\TypeorderController::class);
+    Route::resource('/workorders', App\Http\Controllers\WorkorderController::class);
+    Route::resource('/client', App\Http\Controllers\ClientController::class);
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
