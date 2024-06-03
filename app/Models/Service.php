@@ -24,7 +24,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Service extends Model
 {
-    
+
     static $rules = [
 		'name' => 'required',
 		'condition' => 'required',
@@ -48,14 +48,14 @@ class Service extends Model
     {
         return $this->hasMany('App\Models\Item', 'service_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function typeorder()
     {
-        return $this->hasOne('App\Models\Typeorder', 'id', 'torder_id');
+        return $this->belongsTo('App\Models\Typeorder', 'id', 'torder_id');
     }
-    
+
 
 }

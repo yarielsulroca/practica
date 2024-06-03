@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Item extends Model
 {
-    
+
     static $rules = [
 		'name' => 'required',
 		'model' => 'required',
@@ -43,7 +43,14 @@ class Item extends Model
      *
      * @var array
      */
-    protected $fillable = ['name','model','casification','brand','description','about','service_id'];
+    protected $fillable = [
+        'name',
+        'model',
+        'casification',
+        'brand',
+        'description',
+        'about',
+        'service_id'];
 
 
     /**
@@ -53,14 +60,14 @@ class Item extends Model
     {
         return $this->hasMany('App\Models\Component', 'item_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function service()
     {
-        return $this->hasOne('App\Models\Service', 'id', 'service_id');
+        return $this->belongsTo('App\Models\Service','service_id');
     }
-    
+
 
 }

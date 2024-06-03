@@ -21,7 +21,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Labour extends Model
 {
-    
+
     static $rules = [
 		'value' => 'required',
 		'tax' => 'required',
@@ -43,9 +43,9 @@ class Labour extends Model
      */
     public function budjet()
     {
-        return $this->hasOne('App\Models\Budjet', 'id', 'budjet_id');
+        return $this->belongsTo('App\Models\Budjet', 'id', 'budjet_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -53,6 +53,6 @@ class Labour extends Model
     {
         return $this->hasMany('App\Models\Operation', 'labour_id', 'id');
     }
-    
+
 
 }

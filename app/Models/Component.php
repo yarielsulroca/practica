@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Component extends Model
 {
-    
+
     static $rules = [
 		'text' => 'required',
 		'name' => 'required',
@@ -45,11 +45,11 @@ class Component extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function item()
+   public function item()
     {
-        return $this->hasOne('App\Models\Item', 'id', 'item_id');
+        return $this->belongsTo('App\Models\Item', 'item_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -57,6 +57,6 @@ class Component extends Model
     {
         return $this->hasMany('App\Models\Operation', 'component_id', 'id');
     }
-    
+
 
 }

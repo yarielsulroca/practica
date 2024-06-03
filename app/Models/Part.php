@@ -33,7 +33,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Part extends Model
 {
-    
+
     static $rules = [
 		'price' => 'required',
 		'quantity' => 'required',
@@ -57,8 +57,8 @@ class Part extends Model
      */
     public function budjet()
     {
-        return $this->hasOne('App\Models\Budjet', 'id', 'budjet_id');
+        return $this->belongsTo('App\Models\Budjet', 'id', 'budjet_id');
     }
-    
+
 
 }

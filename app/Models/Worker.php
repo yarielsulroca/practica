@@ -20,7 +20,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Worker extends Model
 {
-    
+
     static $rules = [
 		'name' => 'required',
 		'dni' => 'required',
@@ -42,8 +42,8 @@ class Worker extends Model
      */
     public function operations()
     {
-        return $this->hasMany('App\Models\Operation', 'worker_id', 'id');
+        return $this->hasMany('App\Models\Operation', 'id', 'worker_id');
     }
-    
+
 
 }

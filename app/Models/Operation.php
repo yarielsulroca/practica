@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Operation extends Model
 {
-    
+
     static $rules = [
 		'name' => 'required',
 		'worker_id' => 'required',
@@ -52,22 +52,22 @@ class Operation extends Model
     {
         return $this->hasOne('App\Models\Component', 'id', 'component_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function labour()
     {
-        return $this->hasOne('App\Models\Labour', 'id', 'labour_id');
+        return $this->belongsTo('App\Models\Labour', 'id', 'labour_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function worker()
     {
-        return $this->hasOne('App\Models\Worker', 'id', 'worker_id');
+        return $this->belongsTo('App\Models\Worker', 'id', 'worker_id');
     }
-    
+
 
 }

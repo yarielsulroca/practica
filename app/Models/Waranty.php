@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Waranty extends Model
 {
-    
+
     static $rules = [
 		'description_items' => 'required',
 		'client_id' => 'required',
@@ -39,7 +39,13 @@ class Waranty extends Model
      *
      * @var array
      */
-    protected $fillable = ['description_items','client_id','derechos','date_end','vias_reclamacion','worder_id'];
+    protected $fillable = ['description_items',
+    'client_id',
+    'derechos',
+    'date_end',
+    'vias_reclamacion',
+    'worder_id'
+];
 
 
     /**
@@ -49,6 +55,6 @@ class Waranty extends Model
     {
         return $this->hasOne('App\Models\Workorder', 'id', 'worder_id');
     }
-    
+
 
 }

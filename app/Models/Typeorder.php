@@ -23,7 +23,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Typeorder extends Model
 {
-    
+
     static $rules = [
 		'worder_id' => 'required',
 		'problems' => 'required',
@@ -46,9 +46,9 @@ class Typeorder extends Model
      */
     public function services()
     {
-        return $this->hasMany('App\Models\Service', 'torder_id', 'id');
+        return $this->belongsTo('App\Models\Service', 'torder_id', 'id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -56,6 +56,6 @@ class Typeorder extends Model
     {
         return $this->hasOne('App\Models\Workorder', 'id', 'worder_id');
     }
-    
+
 
 }

@@ -27,7 +27,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Client extends Model
 {
-    
+
     static $rules = [
 		'contacto' => 'required',
 		'direccion' => 'required',
@@ -44,13 +44,11 @@ class Client extends Model
     protected $fillable = ['contacto','social','direccion','ciudad','nombre_cliente','cuit','email','telefono_cliente','telefono_contacto','allow'];
 
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
+   // Has many Ordenes de Trabajo
     public function workorders()
     {
         return $this->hasMany('App\Models\Workorder', 'client_id', 'id');
     }
-    
+
 
 }

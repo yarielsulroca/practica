@@ -26,7 +26,7 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Workorder extends Model
 {
-    
+
     static $rules = [
 		'user_id' => 'required',
 		'problems' => 'required',
@@ -41,40 +41,47 @@ class Workorder extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id','about','problems','date_init','date_end','client_id'];
+    protected $fillable = [
+        'user_id',
+        'about',
+        'problems',
+        'date_init',
+        'date_end',
+        'client_id'
+    ];
 
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function budjets()
+    public function budjet()
     {
-        return $this->hasMany('App\Models\Budjet', 'worder_id', 'id');
+        return $this->hasOne('App\Models\Budjet', 'id', 'worder_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function client()
     {
-        return $this->hasOne('App\Models\Client', 'id', 'client_id');
+        return $this->belongsTo('App\Models\Client', 'id', 'client_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function typeorders()
     {
-        return $this->hasMany('App\Models\Typeorder', 'worder_id', 'id');
+        return $this->hasMany('App\Models\Typeorder', 'id', 'worder_id');
     }
-    
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function waranties()
     {
-        return $this->hasMany('App\Models\Waranty', 'worder_id', 'id');
+        return $this->hasMany('App\Models\Waranty', 'id', 'worder_id');
     }
-    
+
 
 }
